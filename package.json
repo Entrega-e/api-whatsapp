@@ -7,7 +7,7 @@
     "dev": "nodemon",
     "build": "rimraf ./build && tsc",
     "postinstall": "npm run build",
-    "start": "node build/index.js"
+    "start": "node ./build/app.js"
   },
   "author": "",
   "license": "ISC",
