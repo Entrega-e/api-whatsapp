@@ -24,6 +24,6 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "libphonenumber-js": "^1.10.7",
-    "venom-bot": "^4.0.10"
+    "venom-bot": "^4.2.0"
   }
 }
