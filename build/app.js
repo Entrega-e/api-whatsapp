@@ -45,6 +45,13 @@ var sender = new sender_1.default();
 var app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
+app.get('/', function (req, res) {
+    return res.status(200).send({
+        success: 'true',
+        message: 'Connection successfully - Wellcome to Zap-aê!',
+        version: '1.0.0',
+    });
+});
 app.get("/status", function (req, res) {
     return res.send({
         qr_code: sender.qrCode,
