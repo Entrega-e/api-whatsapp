@@ -8,6 +8,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.get('/', (req: Request, res: Response) => {
+  return res.status(200).send({
+    success: 'true',
+    message: 'Connection successfully - Wellcome to Zap-aê!',
+    version: '1.0.0',
+  });
+});
+
 app.get("/status", (req: Request, res: Response) => {
   return res.send({
     qr_code: sender.qrCode,
