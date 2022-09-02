@@ -43,6 +43,7 @@ var sender_1 = __importDefault(require("./sender"));
 var express_1 = __importDefault(require("express"));
 var sender = new sender_1.default();
 var app = (0, express_1.default)();
+var port = process.env.PORT || 5001;
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.get('/', function (req, res) {
@@ -52,7 +53,7 @@ app.get('/', function (req, res) {
         version: '1.0.0',
     });
 });
-app.get("/status", function (req, res) {
+app.get('/status', function (req, res) {
     return res.send({
         qr_code: sender.qrCode,
         connected: sender.isConnected,
@@ -63,7 +64,7 @@ app.get("/qr", function (req, res) {
         qr_code: sender.qrCode,
     });
 });
-app.post("/send", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+app.post('/send', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, number, message, phoneNumber, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
@@ -80,13 +81,12 @@ app.post("/send", function (req, res) { return __awaiter(void 0, void 0, void 0,
             case 3:
                 error_1 = _b.sent();
                 console.error("error", error_1);
-                res.status(500).json({ status: "error", message: "ERROR" });
+                res.status(500).json({ status: "error", message: 'ERROR' });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }
     });
 }); });
-var port = process.env.PORT || 5000;
 app.listen(port, function () {
-    console.log("Listen on port ", port);
+    console.log('Listen on port ', port);
 });
