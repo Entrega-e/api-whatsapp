@@ -88,7 +88,7 @@ var Sender = /** @class */ (function () {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
                         if (!(0, libphonenumber_js_1.isValidPhoneNumber)(to, "BR")) {
-                            throw new Error("This number is not valid");
+                            throw new Error('This number is not valid');
                         }
                         phoneNumber = (_a = (0, libphonenumber_js_1.default)(to, "BR")) === null || _a === void 0 ? void 0 : _a.format("E.164").replace("+", "");
                         phoneNumber = phoneNumber.includes("@c.us")
@@ -101,7 +101,7 @@ var Sender = /** @class */ (function () {
                     case 2:
                         error_1 = _b.sent();
                         console.error("error", error_1);
-                        throw new Error();
+                        return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -114,9 +114,9 @@ var Sender = /** @class */ (function () {
         };
         var status = function (statusSession) {
             // status retornados pela biblioteca
-            // isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail || autocloseCalled ||
+            // isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail || autocloseCalled || 
             // desconnectedMobile || deleteToken || chatsAvailable || deviceNotConnected || serverWssNotConnected ||
-            // noOpenBrowser || initBrowser || openBrowser || connectBrowserWs || initWhatsapp || erroPageWhatsapp ||
+            // noOpenBrowser || initBrowser || openBrowser || connectBrowserWs || initWhatsapp || erroPageWhatsapp || 
             // successPageWhatsapp || waitForLogin || waitChat || successChat
             _this.connected = ["isLogged", "qrReadSuccess", "chatsAvaliable"].includes(statusSession);
         };
@@ -126,7 +126,7 @@ var Sender = /** @class */ (function () {
                 _this.connected = state === venom_bot_1.SocketState.CONNECTED;
             });
         };
-        (0, venom_bot_1.create)({ session: "ws-sender-dev", multidevice: false })
+        (0, venom_bot_1.create)('ws-sender-dev', qr, status)
             .then(function (client) { return start(client); })
             .catch(function (error) { return console.log(error); });
     };
